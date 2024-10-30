@@ -5,11 +5,12 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 //https://mui.com/material-ui/material-icons/?query=gra
 
-type IconNames = "home" | "timeline" | "question-mark";
+type IconNames = "home" | "timeline" | "question-mark" | "egg";
 
 const iconMap: Record<string, IconNames> = {
   index: "home",
   "evolution-page": "timeline",
+  "food-page": "egg",
 };
 const getIconName = (routeName: keyof typeof iconMap): IconNames => {
   return iconMap[routeName] || "question-mark";
@@ -38,6 +39,13 @@ export default function RootLayout() {
         options={{
           headerShown: false,
           tabBarLabel: "Evolution",
+        }}
+      />
+      <Tabs.Screen
+        name="food-page"
+        options={{
+          headerShown: false,
+          tabBarLabel: "Food",
         }}
       />
     </Tabs>
