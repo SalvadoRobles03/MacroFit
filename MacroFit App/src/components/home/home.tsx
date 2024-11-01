@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { Text, Button, Surface } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 
