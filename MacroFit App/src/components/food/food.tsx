@@ -4,6 +4,8 @@ import { Surface } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 import CircularProgress from 'react-native-circular-progress-indicator';
 
+//https://reactscript.com/circular-progress-indicator/
+
 const Food = () => {
   return (
     <Surface
