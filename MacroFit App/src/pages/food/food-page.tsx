@@ -1,8 +1,8 @@
 import React from "react";
-import FoodMainPage from "@/src/components/food/food-main-page";
+import MainFoodPage from "@/src/components/food/main-food-page";
 
 const FoodPage = () => {
-  return <FoodMainPage />;
+  return <MainFoodPage />;
 };
 
 export default FoodPage;
