@@ -8,7 +8,6 @@ interface ProgressGraphsProps {
   totalProtein: number;
   totalCarbs: number;
   totalFat: number;
-  actualCalories: number;
   actualProtein: number;
   actualCarbs: number;
   actualFat: number;
@@ -19,11 +18,24 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
   totalProtein,
   totalCarbs,
   totalFat,
-  actualCalories,
   actualProtein,
   actualCarbs,
   actualFat,
 }) => {
+  let actualCalories = actualProtein * 4 + actualCarbs * 4 + actualFat * 9;
+
+  function getColor() {
+    const percentage = (actualCalories / totalCalories) * 100;
+
+    if (percentage <= 50 || percentage > 105) {
+      return "red";
+    } else if (percentage <= 95) {
+      return "yellow";
+    } else {
+      return "#5df542";
+    }
+  }
+
   return (
     <Surface style={tw`mt-4 bg-black flex-col`}>
       <div style={tw`flex justify-center w-full mb-4`}>
@@ -33,8 +45,8 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
           title={`${actualCalories} / ${totalCalories}`}
           subtitle="Calories"
           radius={60}
-          circleBackgroundColor=""
           inActiveStrokeColor="gray"
+          activeStrokeColor={getColor()}
         />
       </div>
 

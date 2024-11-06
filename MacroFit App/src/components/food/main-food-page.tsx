@@ -39,7 +39,6 @@ const MainFoodPage = () => {
       <NavBar buttons={navButtons} />
       <CalendarControl/>
       <ProgressGraphs
-        actualCalories={450}
         totalCalories={2000}
         actualProtein={70}
         totalProtein={130}
