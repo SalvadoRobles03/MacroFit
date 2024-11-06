@@ -25,7 +25,7 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
   actualFat,
 }) => {
   return (
-    <Surface style={tw`mt-24 bg-black flex-col`}>
+    <Surface style={tw`mt-4 bg-black flex-col`}>
       <div style={tw`flex justify-center w-full mb-4`}>
         <CircularProgress
           value={actualCalories}

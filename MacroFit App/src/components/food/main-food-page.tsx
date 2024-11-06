@@ -3,7 +3,7 @@ import { Surface } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 import ProgressGraphs from "./progress-graphs";
 import NavBar from "../shared/navbar/navbar";
-
+import CalendarControl from "../shared/calendar/calendar-control";
 const MainFoodPage = () => {
   const navButtons = [
     {
@@ -17,20 +17,27 @@ const MainFoodPage = () => {
       onPress: () => console.log("Calendar pressed"),
     },
     {
-      iconName: "delete",
-      text: "Clear",
-      onPress: () => console.log("Clear pressed"),
+      iconName: "replay",
+      text: "Reload",
+      onPress: () => console.log("Reload pressed"),
     },
     {
-      iconName: "add",
-      text: "New Item",
-      onPress: () => console.log("New item pressed"),
+      iconName: "delete",
+      text: "Clear",
+      onPress: () => prueba(),
     },
   ];
+
+  function prueba(){
+    console.log("prueba");
+  }
+
+  
 
   return (
     <Surface style={tw`h-full w-full bg-black`}>
       <NavBar buttons={navButtons} />
+      <CalendarControl/>
       <ProgressGraphs
         actualCalories={450}
         totalCalories={2000}
