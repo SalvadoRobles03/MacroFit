@@ -2,13 +2,14 @@ import React from "react";
 import { Surface } from "react-native-paper";
 import CircularProgress from "react-native-circular-progress-indicator";
 import tw from "tailwind-react-native-classnames";
-import { calculateCalories } from "../../utilities/utils";
+import { useProgressGraphColor } from "@/src/hooks/useProgressGraphColor";
 
 interface ProgressGraphsProps {
   totalCalories: number;
   totalProtein: number;
   totalCarbs: number;
   totalFat: number;
+  actualCalories: number;
   actualProtein: number;
   actualCarbs: number;
   actualFat: number;
@@ -19,23 +20,12 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
   totalProtein,
   totalCarbs,
   totalFat,
+  actualCalories,
   actualProtein,
   actualCarbs,
   actualFat,
 }) => {
-  let actualCalories = calculateCalories(actualProtein, actualCarbs, actualFat);
-
-  function getColor() {
-    const percentage = (actualCalories / totalCalories) * 100;
-
-    if (percentage <= 50 || percentage > 105) {
-      return "red";
-    } else if (percentage <= 95) {
-      return "yellow";
-    } else {
-      return "#5df542";
-    }
-  }
+  const color = useProgressGraphColor(actualCalories, totalCalories);
 
   return (
     <Surface style={tw`mt-4 bg-black flex-col`}>
@@ -47,7 +37,7 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
           subtitle="Calories"
           radius={60}
           inActiveStrokeColor="gray"
-          activeStrokeColor={getColor()}
+          activeStrokeColor={color}
         />
       </div>
 
