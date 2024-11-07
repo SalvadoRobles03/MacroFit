@@ -2,6 +2,7 @@ import React from "react";
 import { Surface } from "react-native-paper";
 import CircularProgress from "react-native-circular-progress-indicator";
 import tw from "tailwind-react-native-classnames";
+import { calculateCalories } from "../../utilities/utils";
 
 interface ProgressGraphsProps {
   totalCalories: number;
@@ -22,7 +23,7 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
   actualCarbs,
   actualFat,
 }) => {
-  let actualCalories = actualProtein * 4 + actualCarbs * 4 + actualFat * 9;
+  let actualCalories = calculateCalories(actualProtein, actualCarbs, actualFat);
 
   function getColor() {
     const percentage = (actualCalories / totalCalories) * 100;
