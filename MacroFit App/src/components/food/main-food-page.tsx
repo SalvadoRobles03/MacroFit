@@ -1,14 +1,16 @@
 import React from "react";
 import { Surface } from "react-native-paper";
-import tw from "tailwind-react-native-classnames";
 import ProgressGraphs from "./progress-graphs";
 import NavBar from "../shared/navbar/navbar";
 import CalendarControl from "../shared/calendar/calendar-control";
 import { foodPageNavButtons } from "./food-page-nav-buttons";
+import { SafeAreaView } from "react-native";
+import { useTailwind } from "tailwind-rn";
 
 const MainFoodPage = () => {
+  const tw = useTailwind();
   return (
-    <Surface style={tw`h-full w-full bg-black`}>
+    <Surface style={tw("h-full w-full bg-black")}>
       <NavBar buttons={foodPageNavButtons} />
       <CalendarControl />
       <ProgressGraphs

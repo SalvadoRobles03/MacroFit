@@ -1,8 +1,9 @@
 import React from "react";
 import { Surface } from "react-native-paper";
 import CircularProgress from "react-native-circular-progress-indicator";
-import tw from "tailwind-react-native-classnames";
 import { useProgressGraphColor } from "@/src/hooks/useProgressGraphColor";
+import { View } from "react-native";
+import { useTailwind } from "tailwind-rn";
 
 interface ProgressGraphsProps {
   totalCalories: number;
@@ -26,10 +27,10 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
   actualFat,
 }) => {
   const color = useProgressGraphColor(actualCalories, totalCalories);
-
+  const tw = useTailwind();
   return (
-    <Surface style={tw`mt-4 bg-black flex-col`}>
-      <div style={tw`flex justify-center w-full mb-4`}>
+    <Surface style={tw('mt-4 bg-black flex-col')}>
+      <View style={tw('flex justify-center w-full mb-4')}>
         <CircularProgress
           value={actualCalories}
           maxValue={totalCalories}
@@ -39,10 +40,10 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
           inActiveStrokeColor="gray"
           activeStrokeColor={color}
         />
-      </div>
+      </View>
 
-      <div style={tw`flex justify-center w-full space-x-2`}>
-        <div>
+      <View style={tw('flex justify-center w-full space-x-2')}>
+        <View>
           <CircularProgress
             value={actualProtein}
             maxValue={totalProtein}
@@ -52,8 +53,8 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
             inActiveStrokeColor="gray"
             activeStrokeColor="#1cc4d4"
           />
-        </div>
-        <div style={tw`ml-4`}>
+        </View>
+        <View style={tw('ml-4')}>
           <CircularProgress
             value={actualCarbs}
             maxValue={totalCarbs}
@@ -64,8 +65,8 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
             inActiveStrokeColor="gray"
             activeStrokeColor="#d6c694"
           />
-        </div>
-        <div style={tw`ml-4`}>
+        </View>
+        <View style={tw('ml-4')}>
           <CircularProgress
             value={actualFat}
             maxValue={totalFat}
@@ -76,8 +77,8 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
             inActiveStrokeColor="gray"
             activeStrokeColor="#b55e02"
           />
-        </div>
-      </div>
+        </View>
+      </View>
     </Surface>
   );
 };
