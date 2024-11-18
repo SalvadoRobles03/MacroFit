@@ -20,7 +20,7 @@ const MainFoodPage = () => {
         totalProtein={130}
         actualCarbs={100}
         totalCarbs={180}
-        actualFat={45}
+        actualFat={35}
         totalFat={80}
       />
     </Surface>

@@ -17,7 +17,7 @@ const NavBarButton = ({
   return (
     <View>
       <Button onPress={onPress} style={tw('')}>
-        <View style={tw('flex flex-col')}>
+        <View style={tw('flex flex-col justify-center items-center')}>
           <MaterialIcons name={iconName} size={30} color={"white"} />
           <Text style={tw('text-white pt-2')}>{text}</Text>
         </View>

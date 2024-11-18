@@ -29,8 +29,10 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
   const color = useProgressGraphColor(actualCalories, totalCalories);
   const tw = useTailwind();
   return (
-    <Surface style={tw('mt-4 bg-black flex-col')}>
-      <View style={tw('flex justify-center w-full mb-4')}>
+    <Surface
+      style={tw("mt-4 bg-black flex-col items-center justify-center w-full")}
+    >
+      <View style={tw("flex justify-center w-full mb-4 items-center")}>
         <CircularProgress
           value={actualCalories}
           maxValue={totalCalories}
@@ -42,7 +44,7 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
         />
       </View>
 
-      <View style={tw('flex justify-center w-full space-x-2')}>
+      <View style={tw("flex w-full flex-row justify-center")}>
         <View>
           <CircularProgress
             value={actualProtein}
@@ -54,7 +56,7 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
             activeStrokeColor="#1cc4d4"
           />
         </View>
-        <View style={tw('ml-4')}>
+        <View style={tw("ml-4")}>
           <CircularProgress
             value={actualCarbs}
             maxValue={totalCarbs}
@@ -66,7 +68,7 @@ const ProgressGraphs: React.FC<ProgressGraphsProps> = ({
             activeStrokeColor="#d6c694"
           />
         </View>
-        <View style={tw('ml-4')}>
+        <View style={tw("ml-4")}>
           <CircularProgress
             value={actualFat}
             maxValue={totalFat}

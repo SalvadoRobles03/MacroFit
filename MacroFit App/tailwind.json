@@ -1,4 +1,74 @@
 {
+    "h-full": {
+        "style": {
+            "height": "100%"
+        }
+    },
+    "h-screen": {
+        "style": {
+            "height": "100vh"
+        }
+    },
+    "h-auto": {
+        "style": {
+            "height": "auto"
+        }
+    },
+    "h-1/2": {
+        "style": {
+            "height": "50%"
+        }
+    },
+    "h-1/4": {
+        "style": {
+            "height": "25%"
+        }
+    },
+    "h-3/4": {
+        "style": {
+            "height": "75%"
+        }
+    },
+    "w-full": {
+        "style": {
+            "width": "100%"
+        }
+    },
+    "w-screen": {
+        "style": {
+            "width": "100vw"
+        }
+    },
+    "w-auto": {
+        "style": {
+            "width": "auto"
+        }
+    },
+    "w-1/2": {
+        "style": {
+            "width": "50%"
+        }
+    },
+    "w-1/4": {
+        "style": {
+            "width": "25%"
+        }
+    },
+    "w-3/4": {
+        "style": {
+            "width": "75%"
+        }
+    },
+    "flex": {
+        "style": {
+            "display": "flex"
+        }
+    },
+    "space-x-2": {
+        "style": {
+            "marginRight": "0.5rem"
+        }
+    },
     "flex-1": {
         "style": {
             "flexGrow": 1,

@@ -11,7 +11,7 @@ const NavBar = ({
   const tw = useTailwind();
   return (
     <Surface
-      style={tw('bg-gray-600 h-fit w-full flex flex-row justify-between items-center')}
+      style={tw('bg-black h-fit w-full flex flex-row justify-between items-center')}
     >
       {buttons.map((button, index) => (
         <NavBarButton
