@@ -29,6 +29,16 @@
             "height": "75%"
         }
     },
+    "h-fit": {
+        "style": {
+            "height": "fit-content"
+        }
+    },
+    "w-fit": {
+        "style": {
+            "width": "fit-content"
+        }
+    },
     "w-full": {
         "style": {
             "width": "100%"
@@ -57,6 +67,31 @@
     "w-3/4": {
         "style": {
             "width": "75%"
+        }
+    },
+    "w-[90%]": {
+        "style": {
+            "width": "90%"
+        }
+    },
+    "w-[95%]": {
+        "style": {
+            "width": "95%"
+        }
+    },
+    "rounded-md": {
+        "style": {
+            "borderRadius": "0.375rem"
+        }
+    },
+    "rounded-2xl": {
+        "style": {
+            "borderRadius": "1rem"
+        }
+    },
+    "rounded-full": {
+        "style": {
+            "borderRadius": "9999px"
         }
     },
     "flex": {
