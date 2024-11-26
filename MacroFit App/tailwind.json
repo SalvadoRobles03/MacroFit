@@ -89,6 +89,36 @@
             "borderRadius": "1rem"
         }
     },
+    "border-0": {
+        "style": {
+            "border-width": "0px"
+        }
+    },
+    "border": {
+        "style": {
+            "border-width": "1px"
+        }
+    },
+    "border-2": {
+        "style": {
+            "border-width": "2px"
+        }
+    },
+    "border-4": {
+        "style": {
+            "border-width": "4px"
+        }
+    },
+    "border-8": {
+        "style": {
+            "border-width": "8px"
+        }
+    },
+    "border-white": {
+        "style": {
+            "border-color": "rgb(255 255 255)"
+        }
+    },
     "rounded-full": {
         "style": {
             "borderRadius": "9999px"
