@@ -15,7 +15,7 @@ const mealsData = [
     protein: 20,
     carbs: 54,
     fats: 15,
-    calories: 429
+    calories: 429,
   },
   {
     id: "2",
@@ -23,7 +23,7 @@ const mealsData = [
     protein: 30,
     carbs: 45,
     fats: 12,
-    calories: 408
+    calories: 408,
   },
   {
     id: "3",
@@ -31,8 +31,8 @@ const mealsData = [
     protein: 25,
     carbs: 35,
     fats: 10,
-    calories: 330
-  }
+    calories: 330,
+  },
 ];
 
 const MainFoodPage = () => {
@@ -40,7 +40,10 @@ const MainFoodPage = () => {
   return (
     <Surface style={tw("h-full w-full bg-black items-center")}>
       <NavBar buttons={foodPageNavButtons} />
-      <ScrollView style={tw("h-full w-full")} contentContainerStyle={tw("items-center")}>
+      <ScrollView
+        style={tw("h-full w-full")}
+        contentContainerStyle={tw("items-center")}
+      >
         <CalendarControl />
         <ProgressGraphs
           actualCalories={2000}
@@ -52,7 +55,7 @@ const MainFoodPage = () => {
           actualFat={35}
           totalFat={80}
         />
-        <FoodTimeContainer meals={mealsData}/>
+        <FoodTimeContainer meals={mealsData} />
       </ScrollView>
     </Surface>
   );
