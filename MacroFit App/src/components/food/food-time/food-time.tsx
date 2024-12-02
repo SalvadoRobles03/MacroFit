@@ -16,7 +16,7 @@ export const FoodTime = ({ meal }: { meal: MealTime }) => {
   return (
     <TouchableOpacity
       style={tw(
-        "flex flex-row justify-between w-[95%] mt-2 rounded w-full border-white border-2 mb-2"
+        "flex flex-row justify-between w-full h-auto mt-2 rounded border-white border-2 mb-2"
       )}
       onPress={() => {
         console.log(meal.id + " pressed");
