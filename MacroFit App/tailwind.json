@@ -34,6 +34,76 @@
             "height": "fit-content"
         }
     },
+    "h-2": {
+        "style": {
+            "height": 8
+        }
+    },
+    "h-4": {
+        "style": {
+            "height": 16
+        }
+    },
+    "h-6": {
+        "style": {
+            "height": 24
+        }
+    },
+    "h-8": {
+        "style": {
+            "height": 32
+        }
+    },
+    "h-10": {
+        "style": {
+            "height": 40
+        }
+    },
+    "h-12": {
+        "style": {
+            "height": 48
+        }
+    },
+    "h-16": {
+        "style": {
+            "height": 64
+        }
+    },
+    "h-20": {
+        "style": {
+            "height": 80
+        }
+    },
+    "h-24": {
+        "style": {
+            "height": 96
+        }
+    },
+    "h-32": {
+        "style": {
+            "height": 128
+        }
+    },
+    "h-40": {
+        "style": {
+            "height": 160
+        }
+    },
+    "h-48": {
+        "style": {
+            "height": 192
+        }
+    },
+    "h-56": {
+        "style": {
+            "height": 224
+        }
+    },
+    "h-64": {
+        "style": {
+            "height": 256
+        }
+    },
     "w-fit": {
         "style": {
             "width": "fit-content"
@@ -662,6 +732,56 @@
         "style": {
             "paddingTop": 8,
             "paddingBottom": 8
+        }
+    },
+        "pl-0": {
+        "style": {
+            "paddingLeft": 0
+        }
+    },
+    "pl-1": {
+        "style": {
+            "paddingLeft": 4
+        }
+    },
+    "pl-2": {
+        "style": {
+            "paddingLeft": 8
+        }
+    },
+    "pl-3": {
+        "style": {
+            "paddingLeft": 12
+        }
+    },
+    "pl-4": {
+        "style": {
+            "paddingLeft": 16
+        }
+    },
+    "pl-5": {
+        "style": {
+            "paddingLeft": 20
+        }
+    },
+    "pl-6": {
+        "style": {
+            "paddingLeft": 24
+        }
+    },
+    "pl-8": {
+        "style": {
+            "paddingLeft": 32
+        }
+    },
+    "pl-10": {
+        "style": {
+            "paddingLeft": 40
+        }
+    },
+    "pl-12": {
+        "style": {
+            "paddingLeft": 48
         }
     },
     "m-0": {
