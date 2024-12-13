@@ -3,15 +3,6 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useTailwind } from "tailwind-rn";
 import { router } from "expo-router";
 
-interface MealTime {
-  id: string;
-  name: string;
-  protein: number;
-  carbs: number;
-  fats: number;
-  calories: number;
-}
-
 export const FoodTime = ({ meal }: { meal: MealTime }) => {
   const tw = useTailwind();
   return (

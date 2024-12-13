@@ -4,17 +4,6 @@ import { Surface } from "react-native-paper";
 import { useTailwind } from "tailwind-rn";
 import { ProgressBar, Text } from "react-native-paper";
 
-interface ProgressBarsProps {
-  totalCalories: number;
-  totalProtein: number;
-  totalCarbs: number;
-  totalFat: number;
-  actualCalories: number;
-  actualProtein: number;
-  actualCarbs: number;
-  actualFat: number;
-}
-
 const ProgressBars: React.FC<ProgressBarsProps> = ({
   totalCalories,
   totalProtein,
@@ -31,8 +20,8 @@ const ProgressBars: React.FC<ProgressBarsProps> = ({
    const fatProgress = Number((actualFat / totalFat).toFixed(1));
 
   return (
-    <Surface style={tw("flex flex-row pl-8")}>
-      <View style={tw("w-1/4 mr-8")}>
+    <View style={tw("flex flex-row pl-8 h-20")}>
+      <View style={tw("w-1/4 mr-8  h-16")}>
         <View style={tw("h-6 w-full justify-center items-center")}>
           <Text style={tw("text-white")}>Protein</Text>
         </View>
@@ -47,7 +36,7 @@ const ProgressBars: React.FC<ProgressBarsProps> = ({
           </Text>
         </View>
       </View>
-      <View style={tw("w-1/4 mr-8")}>
+      <View style={tw("w-1/4 mr-8 h-16 ")}>
         <View style={tw("h-6 w-full justify-center items-center")}>
           <Text style={tw("text-white")}>Carbs</Text>
         </View>
@@ -62,7 +51,7 @@ const ProgressBars: React.FC<ProgressBarsProps> = ({
           </Text>
         </View>
       </View>
-      <View style={tw("w-1/4")}>
+      <View style={tw("w-1/4 h-16")}>
         <View style={tw("h-6 w-full justify-center items-center")}>
           <Text style={tw("text-white")}>Fat</Text>
         </View>
@@ -77,7 +66,7 @@ const ProgressBars: React.FC<ProgressBarsProps> = ({
           </Text>
         </View>
       </View>
-    </Surface>
+    </View>
   );
 };
 export default ProgressBars;

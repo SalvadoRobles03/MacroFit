@@ -4,14 +4,24 @@ import { ScrollView, Text, View } from "react-native";
 import { useTailwind } from "tailwind-rn";
 import { useLocalSearchParams } from "expo-router";
 import ProgressBars from "./progress-bar";
+import MealTimeHeader from "./meal-time-header";
 
 const OpenFood = () => {
   const tw = useTailwind();
   const { mealId } = useLocalSearchParams();
 
+  const randomMeal: MealTime = {
+    id: "1",
+    name: "Breakfast",
+    protein: 25,
+    carbs: 45,
+    fats: 15,
+    calories: 415,
+  };
+
   return (
-    <Surface style={tw("h-full w-full bg-black items-center")}>
-      <View style={tw("w-full h-fit")}>
+    <View style={tw("h-full w-full bg-black items-center")}>
+      <View style={tw("w-full h-16")}>
         <ProgressBars
           actualCalories={2000}
           totalCalories={2000}
@@ -23,7 +33,10 @@ const OpenFood = () => {
           totalFat={80}
         ></ProgressBars>
       </View>
-    </Surface>
+      <View style={tw("w-full h-fit")}>
+        <MealTimeHeader meal={randomMeal}></MealTimeHeader>
+      </View>
+    </View>
   );
 };
 
