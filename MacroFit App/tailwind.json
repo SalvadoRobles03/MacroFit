@@ -104,6 +104,11 @@
             "height": 256
         }
     },
+    "h-[78%]": {
+        "style": {
+            "height": "78%"
+        }
+    },
     "w-fit": {
         "style": {
             "width": "fit-content"

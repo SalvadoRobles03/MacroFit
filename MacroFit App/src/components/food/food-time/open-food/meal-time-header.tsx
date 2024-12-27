@@ -1,11 +1,11 @@
-import { View ,StyleSheet} from "react-native";
-import { Text, IconButton, Menu, Divider, Icon } from "react-native-paper";
+import { View } from "react-native";
+import { Text, IconButton, Menu, Icon } from "react-native-paper";
 import * as React from "react";
-
 import { useTailwind } from "tailwind-rn";
 import { useState } from "react";
 
-const MealTimeHeader = ({ meal }) => {
+
+const MealTimeHeader = ({ meal }: { meal: MealTime }) => {
   const tw = useTailwind();
   const [visible, setVisible] = useState(false);
   const openMenu = () => setVisible(true);
