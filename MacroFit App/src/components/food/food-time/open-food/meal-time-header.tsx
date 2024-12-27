@@ -1,5 +1,5 @@
-import { View } from "react-native";
-import { Text, IconButton, Menu, Divider } from "react-native-paper";
+import { View ,StyleSheet} from "react-native";
+import { Text, IconButton, Menu, Divider, Icon } from "react-native-paper";
 import * as React from "react";
 
 import { useTailwind } from "tailwind-rn";
@@ -37,13 +37,8 @@ const MealTimeHeader = ({ meal }) => {
           </View>
           <View style={tw("")}>
             <Menu
-            theme={{
-              colors: {
-                surface: 'black',
-                text: 'white',
-                onSurface: 'white',
-              },
-            }}
+              style={tw("bg-black")}
+              contentStyle={tw("bg-black")}
               visible={visible}
               onDismiss={closeMenu}
               anchor={
@@ -55,8 +50,24 @@ const MealTimeHeader = ({ meal }) => {
                 ></IconButton>
               }
             >
-              <Menu.Item onPress={() => {}} title="Replicate" leadingIcon="refresh"/>
-              <Menu.Item onPress={() => {}} title="Empty Meal" leadingIcon="delete"/>
+              <Menu.Item
+                onPress={() => {}}
+                title="Replicate"
+                leadingIcon={() => (
+                  <Icon source="refresh" color="white" size={30} />
+                )}
+                style={tw("bg-black")}
+                titleStyle={tw("text-white")}
+              />
+              <Menu.Item
+                onPress={() => {}}
+                title="Empty Meal"
+                leadingIcon={() => (
+                  <Icon source="delete" color="white" size={30} />
+                )}
+                style={tw("bg-black")}
+                titleStyle={tw("text-white")}
+              />
             </Menu>
           </View>
         </View>
