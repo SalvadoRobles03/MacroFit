@@ -3,34 +3,41 @@ import { Text, IconButton, Menu, Icon } from "react-native-paper";
 import * as React from "react";
 import { useTailwind } from "tailwind-rn";
 import { useState } from "react";
-import MealTimeContentItem from "./meal-time-content-item";
-
+import MealTimeContentFood from "./meal-time-content-food";
 
 const MealTimeContent = () => {
   const tw = useTailwind();
-  
+  const [food, setFood] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15]);
+
+  const moveUp = (id) => {
+    const index = food.indexOf(id);
+    if (index > 0) {
+      const newFood = [...food];
+      [newFood[index - 1], newFood[index]] = [newFood[index], newFood[index - 1]];
+      setFood(newFood);
+    }
+  };
+
+  const moveDown = (id) => {
+    const index = food.indexOf(id);
+    if (index < food.length - 1) {
+      const newFood = [...food];
+      [newFood[index + 1], newFood[index]] = [newFood[index], newFood[index + 1]];
+      setFood(newFood);
+    }
+  };
+
   return (
     <View style={tw("w-full border-white border-2 h-[78%]")}>
       <ScrollView
-              style={tw(" h-full w-full")}
-              contentContainerStyle={tw("items-center")}
-              showsVerticalScrollIndicator={true}
-              bounces={true}
-            >
-        <MealTimeContentItem id={1}/>
-        <MealTimeContentItem id={2}/>
-        <MealTimeContentItem id={3}/>
-        <MealTimeContentItem id={4}/>
-        <MealTimeContentItem id={5}/>
-        <MealTimeContentItem id={6}/>
-        <MealTimeContentItem id={7}/>
-        <MealTimeContentItem id={8}/>
-        <MealTimeContentItem id={9}/>
-        <MealTimeContentItem id={10}/>
-        <MealTimeContentItem id={12}/>
-        <MealTimeContentItem id={13}/>
-        <MealTimeContentItem id={14}/>
-        <MealTimeContentItem id={15}/>
+        style={tw("h-full w-full")}
+        contentContainerStyle={tw("items-center")}
+        showsVerticalScrollIndicator={true}
+        bounces={true}
+      >
+        {food.map((id) => (
+          <MealTimeContentFood key={id} id={id} moveUp={moveUp} moveDown={moveDown} />
+        ))}
       </ScrollView>
     </View>
   );
