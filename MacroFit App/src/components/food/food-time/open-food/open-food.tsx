@@ -6,6 +6,7 @@ import { useLocalSearchParams } from "expo-router";
 import ProgressBars from "./progress-bar";
 import MealTimeHeader from "./meal-time-header";
 import MealTimeContent from "./meal-time-content/meal-time-content";
+import MealTimeFooter from "./meal-time-footer";
 
 const OpenFood = () => {
   const tw = useTailwind();
@@ -38,6 +39,7 @@ const OpenFood = () => {
       <View style={tw("w-full h-fit")}>
         <MealTimeHeader meal={randomMeal}></MealTimeHeader>
         <MealTimeContent/>
+        <MealTimeFooter/>
       </View>
     </View>
   );
