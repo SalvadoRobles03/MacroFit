@@ -2,7 +2,7 @@
   "expo": {
     "name": "MacroFit",
     "slug": "MacroFit",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.jpg",
     "scheme": "myapp",
@@ -10,28 +10,21 @@
     "splash": {
       "image": "./src/assets/images/icon.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true
+      "backgroundColor": "#000000"
     },
     "android": {
+      "package": "com.salvadorobles03.macrofit",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/icon.jpg",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#000000"
+      },
+      "permissions": []
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bb9aabb0-7ca8-49a9-98ed-b080dd5fed29"
       }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./src/assets/images/icon.jpg"
-    },
-    "plugins": [
-      "expo-router",
-      "expo-font"
-    ],
-    "experiments": {
-      "typedRoutes": true
     }
   }
 }
