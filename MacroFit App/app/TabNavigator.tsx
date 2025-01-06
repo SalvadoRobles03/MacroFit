@@ -1,58 +1,48 @@
 import React from "react";
-import { View } from "react-native";
-import { Tabs } from "expo-router";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomePage from "../src/pages/home/home-page";
+import EvolutionPage from "../src/pages/evolution/evolution-page";
+import FoodStackNavigator from "./FoodStackNavigator";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useTailwind } from "tailwind-rn";
 
-type IconNames = "home" | "timeline" | "question-mark" | "egg";
+const Tab = createBottomTabNavigator();
 
-const iconMap: Record<string, IconNames> = {
-  index: "home",
-  "evolution-page": "timeline",
-  "food-page": "egg",
-};
-
-const getIconName = (routeName: keyof typeof iconMap): IconNames => {
-  return iconMap[routeName] || "question-mark";
-};
-
-export function TabNavigator() {
-  const tailwind = useTailwind();
+export default function TabNavigator() {
   return (
-    <View style={tailwind("flex-1 bg-black")}>
-      <Tabs
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ color, size }) => {
-            const iconName = getIconName(route.name);
-            return <MaterialIcons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: "white",
-          tabBarInactiveTintColor: "gray",
-          tabBarStyle: { borderTopWidth: 0, backgroundColor: "black" },
-        })}
-      >
-        <Tabs.Screen
-          name="index"
-          options={{
-            headerShown: false,
-            tabBarLabel: "Home",
-          }}
-        />
-        <Tabs.Screen
-          name="evolution-page"
-          options={{
-            headerShown: false,
-            tabBarLabel: "Evolution",
-          }}
-        />
-        <Tabs.Screen
-          name="food-page"
-          options={{
-            headerShown: false,
-            tabBarLabel: "Food",
-          }}
-        />
-      </Tabs>
-    </View>
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { backgroundColor: "black" ,borderTopWidth:0},
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomePage}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Evolution"
+        component={EvolutionPage}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="timeline" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Food"
+        component={FoodStackNavigator}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="restaurant" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 }

@@ -1,20 +1,20 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useTailwind } from "tailwind-rn";
-import { router } from "expo-router";
+import {
+  useNavigation,
+} from "@react-navigation/native";;
 
 export const FoodTime = ({ meal }: { meal: MealTime }) => {
   const tw = useTailwind();
+   const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={tw(
         "flex flex-row justify-between w-full h-auto mt-2 rounded border-white border-2 mb-2"
       )}
       onPress={() =>
-        router.push({
-          pathname: "/food-page/open-food-page",
-          params: { mealId: meal.id },
-        })
+        navigation.navigate("OpenFood")
       }
     >
       <View style={tw("flex flex-col py-2")}>

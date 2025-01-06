@@ -36,7 +36,7 @@ const OpenFood = () => {
           totalFat={80}
         ></ProgressBars>
       </View>
-      <View style={tw("w-full h-fit")}>
+      <View style={tw("w-full h-[73%]")}>
         <MealTimeHeader meal={randomMeal}></MealTimeHeader>
         <MealTimeContent/>
         <MealTimeFooter/>

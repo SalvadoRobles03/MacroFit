@@ -46,7 +46,7 @@ const MealTimeContent = () => {
   );
 
   return (
-    <View style={tw("w-full border-white border-2 h-[74%]")}>
+    <View style={tw("w-full border-white border-2 h-auto")}>
       <FlatList
         data={food}
         keyExtractor={(item) => item.toString()}
