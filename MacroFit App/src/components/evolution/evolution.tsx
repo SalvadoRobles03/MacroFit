@@ -1,14 +1,17 @@
 import React from "react";
 import { View, Text } from "react-native";
-import tw from "tailwind-react-native-classnames";
+import { Surface } from "react-native-paper";
+import { useTailwind } from "tailwind-rn";
 
 const Evolution = () => {
+
+  const tw = useTailwind();
   return (
-    <View style={tw`bg-blue-500 p-4`}>
-      <Text style={tw`text-white text-lg`}>
-        PAGE 2
-      </Text>
-    </View>
+    <Surface
+      style={tw('flex-1 justify-center items-center h-full w-full bg-black')}
+    >
+      <Text style={tw('text-white text-lg')}>PAGE 3</Text>
+    </Surface>
   );
 };
 

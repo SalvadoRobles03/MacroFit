@@ -1,45 +1,32 @@
-import React from "react";
-import { Tabs } from "expo-router";
-import tw from "tailwind-react-native-classnames";
-import { MaterialIcons } from "@expo/vector-icons";
+import * as NavigationBar from "expo-navigation-bar";
+import React, { useEffect } from "react";
+import { TailwindProvider } from "tailwind-rn";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
+import utilities from "../tailwind.json";
+import TabNavigator from "./TabNavigator";
 
-//https://mui.com/material-ui/material-icons/?query=gra
+export default function App() {
+  useEffect(() => {
+    NavigationBar.setVisibilityAsync("hidden");
+  }, []);
 
-type IconNames = "home" | "timeline" | "question-mark";
+  const darkTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: "black",
+      surface: "black",
+      text: "white",
+      primary: "white",
+      accent: "white",
+    },
+  };
 
-const iconMap: Record<string, IconNames> = {
-  index: "home",
-  "evolution-page": "timeline",
-};
-const getIconName = (routeName: keyof typeof iconMap): IconNames => {
-  return iconMap[routeName] || "question-mark";
-};
-
-export default function RootLayout() {
   return (
-    <Tabs
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          const iconName = getIconName(route.name);
-          return <MaterialIcons name={iconName} size={size} color={color} />;
-        },
-        tabBarStyle: tw`bg-white`,
-      })}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          headerShown: false,
-          tabBarLabel: "Home",
-        }}
-      />
-      <Tabs.Screen
-        name="evolution-page"
-        options={{
-          headerShown: false,
-          tabBarLabel: "Evolution",
-        }}
-      />
-    </Tabs>
+    <TailwindProvider utilities={utilities} colorScheme="dark">
+      <PaperProvider theme={darkTheme}>
+          <TabNavigator />
+      </PaperProvider>
+    </TailwindProvider>
   );
 }

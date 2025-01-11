@@ -1,14 +1,27 @@
 import React from "react";
-import { View, Text } from "react-native";
-import tw from "tailwind-react-native-classnames";
+import { Text, Button, Surface } from "react-native-paper";
+import { useTailwind } from "tailwind-rn";
 
 const Home = () => {
+  const tw = useTailwind();
   return (
-    <View style={tw`bg-red-500 p-4`}>
-      <Text style={tw`text-white text-lg`}>
-        ¡Hola, Tailwind en React Native!
+    <Surface
+      style={tw("flex-1 justify-center items-center h-full w-full bg-black")}
+    >
+      <Text variant="headlineMedium" style={tw("mb-4 text-pink-500")}>
+        Welcome to MacroFit
       </Text>
-    </View>
+      <Button
+        mode="text"
+        onPress={() => console.log("Pressed")}
+        style={tw("mb-2 bg-red-500")}
+      >
+        <Text style={tw("text-white")}>Button</Text>
+      </Button>
+      <Button mode="outlined" onPress={() => console.log("Pressed 2")}>
+        Learn More
+      </Button>
+    </Surface>
   );
 };
 
