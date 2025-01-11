@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { useTailwind } from "tailwind-rn";
 import {
   useNavigation,
-} from "@react-navigation/native";;
+} from "@react-navigation/native";
 
 export const FoodTime = ({ meal }: { meal: MealTime }) => {
   const tw = useTailwind();

@@ -276,7 +276,7 @@
     },
     "rounded-full": {
         "style": {
-            "borderRadius": "9999px"
+            "borderRadius": 9999
         }
     },
     "flex": {
