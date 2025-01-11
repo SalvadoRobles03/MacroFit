@@ -1,26 +1,21 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useTailwind } from "tailwind-rn";
-
-interface MealTime {
-  id: string;
-  name: string;
-  protein: number;
-  carbs: number;
-  fats: number;
-  calories: number;
-}
+import {
+  useNavigation,
+} from "@react-navigation/native";;
 
 export const FoodTime = ({ meal }: { meal: MealTime }) => {
   const tw = useTailwind();
+   const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={tw(
-        "flex flex-row justify-between w-[95%] mt-2 rounded w-full border-white border-2 mb-2"
+        "flex flex-row justify-between w-full h-auto mt-2 rounded border-white border-2 mb-2"
       )}
-      onPress={() => {
-        console.log(meal.id + " pressed");
-      }}
+      onPress={() =>
+        navigation.navigate("OpenFood")
+      }
     >
       <View style={tw("flex flex-col py-2")}>
         <Text style={tw("ml-4 mb-2 text-white text-xl")}>{meal.name}</Text>
