@@ -2045,6 +2045,48 @@
             "lineHeight": 32
         }
     },
+    "text-3xl": {
+        "style": {
+            "fontSize": 30,
+            "lineHeight": 36
+        }
+    },
+    "text-4xl": {
+        "style": {
+            "fontSize": 36,
+            "lineHeight": 40
+        }
+    },
+    "text-5xl": {
+        "style": {
+            "fontSize": 48,
+            "lineHeight": 52
+        }
+    },
+    "text-6xl": {
+        "style": {
+            "fontSize": 60,
+            "lineHeight": 64
+        }
+    },
+    "text-7xl": {
+        "style": {
+            "fontSize": 72,
+            "lineHeight": 76
+        }
+    },
+    "text-8xl": {
+        "style": {
+            "fontSize": 96,
+            "lineHeight": 100
+        }
+    },
+    "text-9xl": {
+        "style": {
+            "fontSize": 128,
+            "lineHeight": 132
+        }
+    },
     "text-center": {
         "style": {
             "textAlign": "center"
