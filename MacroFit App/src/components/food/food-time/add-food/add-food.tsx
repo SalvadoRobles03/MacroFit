@@ -1,5 +1,5 @@
 import { FlatList, View, Image } from "react-native";
-import { Switch, Text } from "react-native-paper";
+import { Button, Switch, Text } from "react-native-paper";
 import { useTailwind } from "tailwind-rn";
 import {
   Searchbar,
@@ -96,6 +96,9 @@ const AddFood = () => {
                 />
               </View>
             </View>
+            <Button icon="plus" dark={false} mode="contained" style={tw("mt-4")}>
+              <Text style={tw("text-black text-xl")}>Add Food</Text>
+            </Button>
           </View>
         </Modal>
       </Portal>
