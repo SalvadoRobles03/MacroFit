@@ -336,6 +336,16 @@
             "justifyContent": "space-around"
         }
     },
+    "justify-start": {
+        "style": {
+            "justifyContent": "flex-start"
+        }
+    },
+    "justify-end": {
+        "style": {
+            "justifyContent": "flex-end"
+        }
+    },
     "bg-black": {
         "style": {
             "--tw-bg-opacity": 1,

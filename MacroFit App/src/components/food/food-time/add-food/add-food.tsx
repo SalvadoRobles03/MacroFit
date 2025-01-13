@@ -1,5 +1,5 @@
 import { FlatList, View, Image } from "react-native";
-import { Text } from "react-native-paper";
+import { Switch, Text } from "react-native-paper";
 import { useTailwind } from "tailwind-rn";
 import {
   Searchbar,
@@ -19,9 +19,11 @@ const AddFood = () => {
   const [segment, setSegment] = useState("frequent");
   const [visible, setVisible] = useState(false);
   const [quantity, setQuantity] = useState("");
+  const [isFavorite, setFavorite] = useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+  const onToggleFavorite = () => setFavorite(!isFavorite);
   const containerStyle = {
     backgroundColor: "black",
     padding: 20,
@@ -60,7 +62,7 @@ const AddFood = () => {
             </View>
             <View>
               <Text style={tw("text-white text-lg text-center mt-6")}>
-                grams you will consume:
+                g you will consume:
               </Text>
             </View>
             <View>
@@ -74,16 +76,25 @@ const AddFood = () => {
                 placeholderTextColor={"white"}
                 value={quantity}
                 onChangeText={(text) => {
-                  const validNumber = text.replace(/[^0-9.]/g, '');
-                  const parts = validNumber.split('.');
+                  const validNumber = text.replace(/[^0-9.]/g, "");
+                  const parts = validNumber.split(".");
                   if (parts.length > 2) {
-                    setQuantity(parts[0] + '.' + parts.slice(1).join(''));
+                    setQuantity(parts[0] + "." + parts.slice(1).join(""));
                   } else {
                     setQuantity(validNumber);
                   }
                 }}
                 inputMode="decimal"
               />
+              <View style={tw("flex-row items-center justify-end")}>
+                <Text style={tw("text-white text-xl")}>Favorite</Text>
+                <Switch
+                  value={isFavorite}
+                  onValueChange={onToggleFavorite}
+                  trackColor={{ false: "#767577", true: "#30a000" }}
+                  thumbColor={isFavorite ? "#4dff00" : "#f4f3f4"}
+                />
+              </View>
             </View>
           </View>
         </Modal>
