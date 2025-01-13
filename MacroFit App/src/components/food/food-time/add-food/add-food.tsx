@@ -67,7 +67,23 @@ const AddFood = () => {
               <Macros protein={30} carbs={120} fat={85} />
             </View>
             <View style={tw("mt-2")}>
-              
+              <TextInput
+                mode="outlined"
+                label="Quantity"
+                textColor="white"
+                placeholderTextColor={"white"}
+                value={quantity}
+                onChangeText={(text) => {
+                  const validNumber = text.replace(/[^0-9.]/g, '');
+                  const parts = validNumber.split('.');
+                  if (parts.length > 2) {
+                    setQuantity(parts[0] + '.' + parts.slice(1).join(''));
+                  } else {
+                    setQuantity(validNumber);
+                  }
+                }}
+                inputMode="decimal"
+              />
             </View>
           </View>
         </Modal>
@@ -88,7 +104,7 @@ const AddFood = () => {
         <SegmentedButtons
           style={tw("mt-4")}
           value={segment}
-          onValueChange={setQuantity}
+          onValueChange={setSegment}
           buttons={[
             {
               value: "frequent",
