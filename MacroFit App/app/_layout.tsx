@@ -1,5 +1,5 @@
 import * as NavigationBar from "expo-navigation-bar";
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 import { TailwindProvider } from "tailwind-rn";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import utilities from "../tailwind.json";
@@ -24,7 +24,7 @@ export default function App() {
   };
 
   return (
-    <SQLiteProvider databaseName="macrofit.db" useSuspense>
+    <SQLiteProvider databaseName="macrofit.db">
       <TailwindProvider utilities={utilities} colorScheme="dark">
         <PaperProvider theme={darkTheme}>
           <TabNavigator />

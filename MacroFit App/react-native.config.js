@@ -1,7 +1,5 @@
 module.exports = {
-  // ...existing code...
   dependencies: {
-    // ...existing code...
     "react-native-sqlite-storage": {
       platforms: {
         android: {
@@ -11,7 +9,5 @@ module.exports = {
         }
       }
     }
-    // ...existing code...
   }
-  // ...existing code...
 };
