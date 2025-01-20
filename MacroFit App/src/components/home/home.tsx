@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, Button, Surface } from "react-native-paper";
 import { useTailwind } from "tailwind-rn";
 import { getAllFoods, addFood } from "../../api/db-api";
@@ -6,14 +6,18 @@ import { getAllFoods, addFood } from "../../api/db-api";
 const Home = () => {
   const tw = useTailwind();
 
+  const [foods, setFoods] = useState<Food[]>([]);
+
+  useEffect(() => {
+    handleGetAllFoods();
+  }, []);
+
   const handleGetAllFoods = async () => {
-    const foods = await getAllFoods();
-    console.log(foods);
+    setFoods(await getAllFoods() as Food[]);
   };
 
-  const handleAddFood = async () => {
-    await addFood("Piña",2,8.53,14.7,"Grams","",100);
-    console.log("Food added");
+  const handleAddFood = async (food: Food) => {
+    await addFood(food);
   };
 
   return (
@@ -32,7 +36,17 @@ const Home = () => {
       </Button>
       <Button
         mode="text"
-        onPress={handleAddFood}
+        onPress={() =>
+          handleAddFood({
+            name: "Orange",
+            protein: 0.5,
+            carbs: 25,
+            fat: 0.3,
+            quantity_type: "Grams",
+            quantity: 100,
+            image_url: "httos",
+          })
+        }
         style={tw("mb-2 bg-green-500")}
       >
         <Text style={tw("text-white")}>Add Food</Text>
@@ -40,6 +54,7 @@ const Home = () => {
       <Button mode="outlined" onPress={() => console.log("Pressed 2")}>
         Learn More
       </Button>
+      <Text>foods: {foods.map((food) => food.id + ":" + food.name).join(", ")}</Text>
     </Surface>
   );
 };

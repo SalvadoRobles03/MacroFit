@@ -1,12 +1,16 @@
-import { openDatabase } from "react-native-sqlite-storage";
+import * as SQLite from "expo-sqlite";
 
 export const getDBConnection = async () => {
-  const db = await openDatabase({ name: 'macrofit.db', location: 'default' });
-  await createTables(db);
-  return db;
+  try {
+    const db = SQLite.openDatabaseAsync("macrofit.db");
+    await createTables(db);
+    return db;
+  } catch (error) {
+    console.error("Failed to get DB connection:", error);
+  }
 };
 
-const createTables = async (db) => {
+const createTables = async (db: Promise<SQLite.SQLiteDatabase>) => {
   const queries = [
     `create table if not exists exercises (
       id integer primary key autoincrement,
@@ -183,10 +187,10 @@ const createTables = async (db) => {
       date TEXT not null,
       time TEXT not null,
       comment TEXT not null
-    )`
+    )`,
   ];
 
   for (const query of queries) {
-    await db.executeSql(query);
+    (await db).runAsync(query);
   }
 };
