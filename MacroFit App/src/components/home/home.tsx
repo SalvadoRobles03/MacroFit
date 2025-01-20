@@ -45,6 +45,7 @@ const Home = () => {
             quantity_type: "Grams",
             quantity: 100,
             image_url: "httos",
+            favorite: 1,
           })
         }
         style={tw("mb-2 bg-green-500")}

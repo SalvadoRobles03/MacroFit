@@ -92,16 +92,18 @@ const createTables = async (db: Promise<SQLite.SQLiteDatabase>) => {
       name TEXT not null,
       abbr TEXT
     )`,
-    `create table if not exists foods (
-      id integer primary key autoincrement,
-      name TEXT not null,
-      protein REAL not null,
-      carbs REAL not null,
-      fat REAL not null,
-      quantity_type TEXT not null references quantity_types(name),
-      image_url TEXT,
-      quantity REAL not null
-    )`,
+    `CREATE TABLE IF NOT EXISTS foods (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    protein REAL NOT NULL,
+    carbs REAL NOT NULL,
+    fat REAL NOT NULL,
+    quantity_type TEXT NOT NULL,
+    image_url TEXT,
+    quantity REAL NOT NULL,
+    favorite INTEGER NOT NULL CHECK (favorite IN (0, 1))
+);
+`,
     `create table if not exists food_times_foods (
       id integer primary key autoincrement,
       food_time_id integer not null references food_times,

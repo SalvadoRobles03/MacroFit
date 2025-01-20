@@ -6,4 +6,5 @@ interface Food {
   quantity_type: string;
   quantity: number;
   image_url: string;
+  favorite: number;
 }
