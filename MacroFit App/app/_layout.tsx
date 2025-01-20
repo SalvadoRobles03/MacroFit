@@ -4,6 +4,7 @@ import { TailwindProvider } from "tailwind-rn";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import utilities from "../tailwind.json";
 import TabNavigator from "./TabNavigator";
+import { SQLiteProvider } from "expo-sqlite";
 
 export default function App() {
   useEffect(() => {
@@ -23,10 +24,12 @@ export default function App() {
   };
 
   return (
-    <TailwindProvider utilities={utilities} colorScheme="dark">
-      <PaperProvider theme={darkTheme}>
+    <SQLiteProvider databaseName="macrofit.db">
+      <TailwindProvider utilities={utilities} colorScheme="dark">
+        <PaperProvider theme={darkTheme}>
           <TabNavigator />
-      </PaperProvider>
-    </TailwindProvider>
+        </PaperProvider>
+      </TailwindProvider>
+    </SQLiteProvider>
   );
 }

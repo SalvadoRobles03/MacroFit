@@ -28,7 +28,7 @@ const AddFood = () => {
     backgroundColor: "black",
     padding: 20,
     width: "98%",
-    marginLeft: "1%",
+    marginLeft: 1,
     borderRadius: 20,
     borderColor: "white",
     borderWidth: 2,
