@@ -3,12 +3,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import FoodPage from "../src/pages/food/food-page";
 import OpenFoodPage from "../src/pages/food/open-food-page";
 import AddFoodPage from "@/src/pages/food/add-food-page";
+import InitialFoodPage from "@/src/pages/food/initial-food-page";
 
 const Stack = createStackNavigator();
 
 export default function FoodStackNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Food">
+    <Stack.Navigator initialRouteName="InitialFood">
       <Stack.Screen
         name="Food"
         component={FoodPage}
@@ -27,6 +28,16 @@ export default function FoodStackNavigator() {
       <Stack.Screen
         name="AddFood"
         component={AddFoodPage}
+        options={{
+          headerShown: true,
+          title: "",
+          headerTintColor: "white", // Color del back button
+          headerStyle: { backgroundColor: "black" },
+        }}
+      />
+      <Stack.Screen
+        name="InitialFood"
+        component={InitialFoodPage}
         options={{
           headerShown: true,
           title: "",
