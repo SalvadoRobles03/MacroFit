@@ -1,6 +1,6 @@
 import { getDBConnection } from "../db-services/db-service";
 
-export const registerProfile = async (profile: Profile) => {
+export const saveProfile = async (profile: Profile) => {
   try {
     const db = await getDBConnection();
     await db?.runAsync(
@@ -23,13 +23,14 @@ export const getAllProfiles = () => {
   });
 };
 
-export const getProfile = async (id: number) => {
+export const getProfile = async (id: number): Promise<Profile | undefined> => {
   try {
     const db = await getDBConnection();
     const profile = await db?.getFirstAsync(`SELECT * FROM profiles WHERE id = ${id}`);
-    return profile;
+    return profile as Profile;
   } catch (error) {
     console.error(error);
+    return undefined;
   }
 };
 
