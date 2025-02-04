@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { saveProfile, getProfile, getAllProfiles } from "../api/profile-api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 interface ProfileContextType {
   profile: Profile | null;
@@ -18,6 +19,7 @@ interface ProfileProviderProps {
 
 export const ProfileProvider = ({ children }: ProfileProviderProps) => {
   const [profile, setProfile] = useState<Profile | null>(null);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const loadSelectedProfile = async () => {
@@ -42,6 +44,7 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
         }
       } catch (error) {
         console.log("Error al cargar el perfil desde AsyncStorage:", error);
+        navigation.navigate("InternalError");
       }
     };
 
@@ -49,13 +52,23 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
   }, []);
 
   const registerProfile = async (profile: Profile) => {
-    await saveProfile(profile);
-    const newProfile = await getProfile(profile.id);
-    if (newProfile) {
-      setProfile(newProfile);
-      await AsyncStorage.setItem("selectedProfileId", newProfile.id.toString());
-    } else {
-      console.log("Error al obtener el nuevo perfil");
+    try {
+      await saveProfile(profile);
+      if (profile.id) {
+        const newProfile = await getProfile(profile.id);
+        if (newProfile) {
+          setProfile(newProfile);
+          await AsyncStorage.setItem(
+            "selectedProfileId",
+            newProfile.id ? newProfile.id.toString() : ""
+          );
+        } else {
+          console.log("Error al obtener el nuevo perfil");
+        }
+      }
+    } catch (error) {
+      console.error("Error en registerProfile:", error);
+      navigation.navigate("InternalError");
     }
   };
 
@@ -70,6 +83,7 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
       }
     } catch (error) {
       console.log("Error al seleccionar el perfil:", error);
+      navigation.navigate("InternalError");
     }
   };
 

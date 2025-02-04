@@ -6,8 +6,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import HomePage from "../src/pages/home/home-page";
 import EvolutionPage from "../src/pages/evolution/evolution-page";
 import FoodStackNavigator from "./FoodStackNavigator";
-import CreateProfileScreen from "../src/pages/profile/CreateProfileScreen";
-import SelectProfileScreen from "../src/pages/profile/SelectProfileScreen";
+import CreateProfilePage from "@/src/pages/profile/create-profile-page";
+import SelectProfilePage from "@/src/pages/profile/select-profile-page";
+import InternalErrorPage from "../src/pages/error/Internal-error-page";
 import { MaterialIcons } from "@expo/vector-icons";
 import { ProfileContext } from "../src/Auth/ProfileContext";
 
@@ -62,8 +63,9 @@ function ProfileStackNavigator() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="CreateProfile" component={CreateProfileScreen} />
-      <Stack.Screen name="SelectProfile" component={SelectProfileScreen} />
+      <Stack.Screen name="CreateProfile" component={CreateProfilePage} />
+      <Stack.Screen name="SelectProfile" component={SelectProfilePage} />
+      <Stack.Screen name="InternalError" component={InternalErrorPage} />
     </Stack.Navigator>
   );
 }
@@ -72,9 +74,5 @@ export default function TabNavigator() {
   const context = useContext(ProfileContext);
   const profile = context?.profile;
 
-  return (
-    <NavigationContainer>
-      {profile ? <MainTabNavigator /> : <ProfileStackNavigator />}
-    </NavigationContainer>
-  );
+  return profile ? <MainTabNavigator /> : <ProfileStackNavigator />;
 }

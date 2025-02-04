@@ -1,6 +1,6 @@
 
 interface Profile {
-    id: number;
+    id: number | null;
     name: string;
     birth_date: string;
     sex: number;
