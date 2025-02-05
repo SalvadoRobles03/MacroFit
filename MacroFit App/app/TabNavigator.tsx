@@ -55,24 +55,20 @@ function MainTabNavigator() {
   );
 }
 
-function ProfileStackNavigator() {
+export default function TabNavigator() {
+  const context = useContext(ProfileContext);
+  const profile = context?.profile;
+
   return (
-    <Stack.Navigator
-      initialRouteName="SelectProfile"
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {profile ? (
+        <Stack.Screen name="Main" component={MainTabNavigator} />
+      ) : (
+        <Stack.Screen name="SelectProfile" component={SelectProfilePage} />
+      )}
       <Stack.Screen name="CreateProfile" component={CreateProfilePage} />
       <Stack.Screen name="SelectProfile" component={SelectProfilePage} />
       <Stack.Screen name="InternalError" component={InternalErrorPage} />
     </Stack.Navigator>
   );
-}
-
-export default function TabNavigator() {
-  const context = useContext(ProfileContext);
-  const profile = context?.profile;
-
-  return profile ? <MainTabNavigator /> : <ProfileStackNavigator />;
 }

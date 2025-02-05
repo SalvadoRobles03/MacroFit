@@ -40,24 +40,17 @@ const SelectProfile = () => {
         <Text style={tw("text-white text-large")}>Create Profile</Text>
       </Button>
       <ScrollView
-        style={tw("w-[90%] mt-4")}
+        style={tw("w-[90%] ")}
         contentContainerStyle={tw("items-center")}
         showsVerticalScrollIndicator={true}
         bounces={true}
       >
         {profiles.map((profile) => (
-          <Button key={profile.id} style={tw("w-full p-4 border-2 border-white")} onPress={() => selectProfile(profile.id)}>
+          <Button key={profile.id} style={tw("w-full p-4 border-2 border-white mt-4")} onPress={() => selectProfile(profile.id)}>
             <Text style={tw("text-white text-xl")}>{profile.name}</Text>
           </Button>
         ))}
       </ScrollView>
-      <Button
-        mode="contained"
-        onPress={() => {}}
-        style={tw("mt-4 bg-black text-white border-2 border-white")}
-      >
-        <Text style={tw("text-white text-2xl")}>Select Profile</Text>
-      </Button>
     </View>
   );
 };

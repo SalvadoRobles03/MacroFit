@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Text, Button, Surface } from "react-native-paper";
 import { useTailwind } from "tailwind-rn";
 import { getAllFoods, addFood } from "../../api/foods-api";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
   const tw = useTailwind();
+  const navigation = useNavigation();
 
   const [foods, setFoods] = useState<Food[]>([]);
 
@@ -52,8 +54,8 @@ const Home = () => {
       >
         <Text style={tw("text-white")}>Add Food</Text>
       </Button>
-      <Button mode="outlined" onPress={() => console.log("Pressed 2")}>
-        Learn More
+      <Button mode="outlined" onPress={() => navigation.navigate("SelectProfile")}>
+        Select Profile
       </Button>
       <Text style={tw("text-white")}>
         foods: {foods.map((food) => food.id + ":" + food.name).join(", ")}

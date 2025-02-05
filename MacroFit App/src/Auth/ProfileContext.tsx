@@ -75,6 +75,7 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
       if (profile) {
         setProfile(profile);
         await AsyncStorage.setItem("selectedProfileId", id.toString());
+        navigation.navigate("Main");
       } else {
         console.log("Perfil no encontrado");
       }
