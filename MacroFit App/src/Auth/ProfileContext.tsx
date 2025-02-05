@@ -37,10 +37,7 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
           }
         } else {
           // Si no hay perfil seleccionado, cargar el primer perfil disponible o dejarlo nulo
-          const profiles = (await getAllProfiles()) as Profile[];
-          if (profiles.length > 0) {
-            setProfile(profiles[0]);
-          }
+          navigation.navigate("SelectProfile")
         }
       } catch (error) {
         console.log("Error al cargar el perfil desde AsyncStorage:", error);

@@ -58,7 +58,7 @@ function MainTabNavigator() {
 function ProfileStackNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="CreateProfile"
+      initialRouteName="SelectProfile"
       screenOptions={{
         headerShown: false,
       }}

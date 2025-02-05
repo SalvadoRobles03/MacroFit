@@ -2,7 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import { DateTimePickerAndroid } from "@react-native-community/datetimepicker";
 import { ProfileContext } from "../Auth/ProfileContext";
 
+import { useNavigation } from "@react-navigation/native";
+
 const useProfileForm = () => {
+  const navigation = useNavigation();
   const { registerProfile } = useContext(ProfileContext);
   const [isFocus, setIsFocus] = useState(false);
   const [date, setDate] = useState(new Date());
@@ -41,6 +44,7 @@ const useProfileForm = () => {
 
   const handleSubmit = () => {
     registerProfile(profile);
+    navigation.navigate("SelectProfile");
   };
 
   const formatDate = (dateString: String) => {

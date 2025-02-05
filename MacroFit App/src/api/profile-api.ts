@@ -11,12 +11,12 @@ export const saveProfile = async (profile: Profile) => {
   }
 };
 
-export const getAllProfiles = () => {
+export const getAllProfiles = (): Promise<Profile[]> => {
   return new Promise(async (resolve, reject) => {
     try {
       const db = await getDBConnection();
-      const allProfile = await db?.getAllAsync("SELECT * FROM profiles");
-      resolve(allProfile);
+      const allProfiles = await db?.getAllAsync("SELECT * FROM profiles");
+      resolve(allProfiles as Profile[]);
     } catch (error) {
       reject(error);
     }

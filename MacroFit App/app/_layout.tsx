@@ -6,10 +6,16 @@ import utilities from "../tailwind.json";
 import TabNavigator from "./TabNavigator";
 import { SQLiteProvider } from "expo-sqlite";
 import { ProfileProvider } from "@/src/Auth/ProfileContext";
+import { getDBConnection } from "@/src/db-services/db-service";
 
 export default function App() {
   useEffect(() => {
     NavigationBar.setVisibilityAsync("hidden");
+    const initializeDB = async () => {
+      await getDBConnection();
+    };
+
+    initializeDB();
   }, []);
 
   const darkTheme = {
