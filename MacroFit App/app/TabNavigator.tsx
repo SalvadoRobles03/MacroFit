@@ -60,12 +60,11 @@ export default function TabNavigator() {
   const profile = context?.profile;
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {profile ? (
-        <Stack.Screen name="Main" component={MainTabNavigator} />
-      ) : (
-        <Stack.Screen name="SelectProfile" component={SelectProfilePage} />
-      )}
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName={profile ? "Main" : "CreateProfile"}
+    >
+      <Stack.Screen name="Main" component={MainTabNavigator} />
       <Stack.Screen name="CreateProfile" component={CreateProfilePage} />
       <Stack.Screen name="SelectProfile" component={SelectProfilePage} />
       <Stack.Screen name="InternalError" component={InternalErrorPage} />

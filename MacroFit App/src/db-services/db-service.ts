@@ -60,8 +60,8 @@ const createTables = async (db: Promise<SQLite.SQLiteDatabase>) => {
       carbs REAL not null,
       fat REAL not null,
       calories REAL not null,
-      type integer not null,
-      check (type IN (0, 1, 2))
+      diet_type integer not null,
+      check (diet_type IN (0, 1, 2))
     ) strict`,
     `create table if not exists evolution_records (
       id integer primary key autoincrement,

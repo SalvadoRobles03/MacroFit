@@ -34,7 +34,7 @@ const InitialFood = () => {
 
   return (
     <View style={tw("flex w-full bg-black items-center")}>
-      <View style={tw("w-full flex-row justify-center items-center")}>
+      <View style={tw("w-full flex-row justify-center items-center mt-16")}>
         <Text style={tw("text-white text-2xl mr-4")}>Number of Foods: </Text>
         <Dropdown
           containerStyle={tw("bg-black")}
