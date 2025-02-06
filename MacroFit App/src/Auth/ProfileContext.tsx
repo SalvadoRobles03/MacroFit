@@ -36,7 +36,6 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
             await AsyncStorage.removeItem("selectedProfileId");
           }
         } else {
-          // Si no hay perfil seleccionado, cargar el primer perfil disponible o dejarlo nulo
           navigation.navigate("SelectProfile")
         }
       } catch (error) {

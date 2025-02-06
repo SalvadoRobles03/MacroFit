@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Surface } from "react-native-paper";
 import ProgressGraphs from "./progress-graphs";
 import NavBar from "../shared/navbar/navbar";
@@ -7,6 +7,11 @@ import { foodPageNavButtons } from "./food-page-nav-buttons";
 import { ScrollView } from "react-native";
 import { useTailwind } from "tailwind-rn";
 import { FoodTimeContainer } from "./food-time/food-time-container";
+import { ProfileContext } from "@/src/Auth/ProfileContext";
+import useActualMacros from "@/src/hooks/useActualMacros";
+import useFoodDays from "@/src/hooks/useFoodDays";
+import { useNavigation } from "@react-navigation/native";
+import Loading from "../loading/loading";
 
 const mealsData = [
   {
@@ -85,7 +90,24 @@ const mealsData = [
 
 const MainFoodPage = () => {
   const tw = useTailwind();
-  return (
+  const navigation = useNavigation();
+  const { profile } = useContext(ProfileContext);
+  const actualMacros = useActualMacros(profile);
+  const isFoodDay = useFoodDays(profile);
+  
+  
+  useEffect(() => {
+    if (actualMacros) {
+      if(!isFoodDay){
+        navigation.navigate("InitialFood");
+      }
+    } else if (!actualMacros) {
+      navigation.navigate("NewMacros");
+    }
+  }, [actualMacros, isFoodDay, navigation]);
+
+
+  return actualMacros && isFoodDay ? (
     <Surface style={tw("flex w-full bg-black items-center")}>
       <NavBar buttons={foodPageNavButtons} />
       <ScrollView
@@ -108,7 +130,7 @@ const MainFoodPage = () => {
         <FoodTimeContainer meals={mealsData} />
       </ScrollView>
     </Surface>
-  );
+  ) : <Loading></Loading>;
 };
 
 export default MainFoodPage;

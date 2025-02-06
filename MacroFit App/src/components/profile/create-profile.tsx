@@ -1,7 +1,7 @@
 import { Text, TextInput, Button } from "react-native-paper";
 import { View } from "react-native";
 import { useTailwind } from "tailwind-rn";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Dropdown } from "react-native-element-dropdown";
 import useProfileForm from "../../hooks/useProfileForm";

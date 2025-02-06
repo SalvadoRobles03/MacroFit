@@ -6,6 +6,8 @@ import { useNavigation } from "@react-navigation/native";
 import { saveMacros } from "../api/macros-api";
 import { Macros } from "../interfaces/macros.interface";
 
+import useFoodDays from "@/src/hooks/useFoodDays";
+
 const useMacrosForm = () => {
   const navigation = useNavigation();
   const { profile } = useContext(ProfileContext);
@@ -15,13 +17,15 @@ const useMacrosForm = () => {
     id: null,
     profile_id: profile.id,
     init_date: date.toISOString().split("T")[0],
-    finish_date: 'Actual',
+    finish_date: "Actual",
     protein: 0,
     carbs: 0,
     fat: 0,
     calories: 0,
     diet_type: 2,
   });
+  
+  const isFoodDay = useFoodDays(profile);
 
   const handleChange = (name: keyof Macros, value: string | number) => {
     setMacros({ ...macros, [name]: value });
@@ -29,6 +33,7 @@ const useMacrosForm = () => {
 
   const handleSubmit = () => {
     saveMacros(macros);
+    navigation.goBack();
   };
 
   return {

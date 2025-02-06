@@ -1,4 +1,3 @@
-// TabNavigator.js
 import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -11,11 +10,17 @@ import SelectProfilePage from "@/src/pages/profile/select-profile-page";
 import InternalErrorPage from "../src/pages/error/Internal-error-page";
 import { MaterialIcons } from "@expo/vector-icons";
 import { ProfileContext } from "../src/Auth/ProfileContext";
+import { View } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
+import useActualMacros from "@/src/hooks/useActualMacros";
+import useFoodDays from "@/src/hooks/useFoodDays";
+import Loading from "@/src/components/loading/loading";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function MainTabNavigator() {
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
@@ -59,10 +64,16 @@ export default function TabNavigator() {
   const context = useContext(ProfileContext);
   const profile = context?.profile;
 
+  if (profile === undefined || profile === null) {
+    return (
+      <Loading />
+    );
+  }
+
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={profile ? "Main" : "CreateProfile"}
+      initialRouteName={profile ? "Main" : "SelectProfile"}
     >
       <Stack.Screen name="Main" component={MainTabNavigator} />
       <Stack.Screen name="CreateProfile" component={CreateProfilePage} />

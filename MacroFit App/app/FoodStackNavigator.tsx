@@ -5,17 +5,13 @@ import OpenFoodPage from "../src/pages/food/open-food-page";
 import AddFoodPage from "@/src/pages/food/add-food-page";
 import InitialFoodPage from "@/src/pages/food/initial-food-page";
 import NewMacrosPage from "@/src/pages/macros/new-macros-page";
-import { ProfileContext } from "@/src/Auth/ProfileContext";
-import useActualMacros from "@/src/hooks/useActualMacros";
+
 
 const Stack = createStackNavigator();
 
 export default function FoodStackNavigator() {
-  const { profile } = useContext(ProfileContext);
-  const actualMacros = useActualMacros(profile); 
-
   return (
-    <Stack.Navigator initialRouteName={actualMacros ? "Food" : "NewMacros"}>
+    <Stack.Navigator initialRouteName={"Food"}>
       <Stack.Screen
         name="Food"
         component={FoodPage}

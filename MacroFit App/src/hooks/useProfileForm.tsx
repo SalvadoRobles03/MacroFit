@@ -32,7 +32,13 @@ const useProfileForm = () => {
   const showDatePicker = () => {
     DateTimePickerAndroid.open({
       value: date,
-      onChange,
+      onChange: (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        currentDate.setMinutes(
+          currentDate.getMinutes() - currentDate.getTimezoneOffset()
+        );
+        onChange(event, currentDate);
+      },
       mode: "date",
       display: "spinner",
     });

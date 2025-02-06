@@ -3,7 +3,11 @@ import { useTailwind } from "tailwind-rn";
 import { Text, Button } from "react-native-paper";
 import { Dropdown } from "react-native-element-dropdown";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import useActualMacros from "@/src/hooks/useActualMacros";
+import useFoodDays from "@/src/hooks/useFoodDays";
+import { ProfileContext } from "@/src/Auth/ProfileContext";
 
 const numFoods = [
   { label: "1", value: "1" },
@@ -24,12 +28,13 @@ const days = [
   { label: "Friday", value: "Friday" },
   { label: "Saturday", value: "Saturday" },
   { label: "Sunday", value: "Sunday" },
-]
+];
 
 const InitialFood = () => {
   const tw = useTailwind();
+  const navigation = useNavigation();
   const [num, setNum] = useState(numFoods[0].value);
-  const [untilDay,setUntilDay] = useState(days[0].value);
+  const [untilDay, setUntilDay] = useState(days[0].value);
   const [isFocus, setIsFocus] = useState(false);
 
   return (
@@ -85,7 +90,7 @@ const InitialFood = () => {
           icon={() => <AntDesign name="right" size={24} color="white" />}
           mode="contained"
           style={tw("mt-4 bg-black text-white border-2 border-white")}
-          onPress={() => console.log("pressed")}
+          onPress={() => navigation.reset({ routes: [{index:0, name: "Food" }] })}
         >
           <Text style={tw("text-white text-2xl mr-4")}>Create</Text>
         </Button>

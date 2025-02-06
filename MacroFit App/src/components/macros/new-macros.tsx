@@ -33,6 +33,7 @@ const NewMacros = () => {
           placeholderTextColor={"white"}
           onChangeText={(text) => handleChange("protein", text)}
           style={tw("w-full mt-4 bg-black text-white")}
+          keyboardType="numeric"
         />
         <TextInput
           mode="outlined"
@@ -42,6 +43,7 @@ const NewMacros = () => {
           value={macros.carbs.toString()}
           onChangeText={(text) => handleChange("carbs", text)}
           style={tw("w-full mt-4 bg-black text-white")}
+          keyboardType="numeric"
         />
         <TextInput
           mode="outlined"
@@ -51,6 +53,7 @@ const NewMacros = () => {
           value={macros.fat.toString()}
           onChangeText={(text) => handleChange("fat", text)}
           style={tw("w-full mt-4 bg-black text-white")}
+          keyboardType="numeric"
         />
         <View style={tw("w-full flex-row justify-center items-center")}>
           <Text style={tw("text-white text-2xl mt-4")}>
