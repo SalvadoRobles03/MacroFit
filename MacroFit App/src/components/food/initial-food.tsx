@@ -8,6 +8,9 @@ import { useNavigation } from "@react-navigation/native";
 import useActualMacros from "@/src/hooks/useActualMacros";
 import useFoodDays from "@/src/hooks/useFoodDays";
 import { ProfileContext } from "@/src/Auth/ProfileContext";
+import { saveFoodDay } from "@/src/api/food-days-api";
+import { getActualMacrosByProfileId } from "@/src/api/macros-api";
+import { saveFoodTime } from "@/src/api/food-times-api";
 
 const numFoods = [
   { label: "1", value: "1" },
@@ -33,9 +36,93 @@ const days = [
 const InitialFood = () => {
   const tw = useTailwind();
   const navigation = useNavigation();
+  const { profile } = useContext(ProfileContext);
   const [num, setNum] = useState(numFoods[0].value);
   const [untilDay, setUntilDay] = useState(days[0].value);
   const [isFocus, setIsFocus] = useState(false);
+  const [macrosId, setMacrosId] = useState<number | undefined | null>(
+    undefined
+  );
+
+  useEffect(() => {
+    const fetchMacros = async () => {
+      try {
+        const macros = await getActualMacrosByProfileId(profile.id);
+        setMacrosId(macros?.id);
+      } catch (error) {
+        console.error("Error fetching macros:", error);
+      }
+    };
+    fetchMacros();
+  }, [profile.id]);
+
+  const getNextDayOfWeek = (dayOfWeek: string): Date => {
+    const daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const today = new Date();
+    const resultDate = new Date(today);
+    const dayIndex = daysOfWeek.indexOf(dayOfWeek);
+    resultDate.setDate(today.getDate() + ((dayIndex + 7 - today.getDay()) % 7));
+    return resultDate;
+  };
+
+  const handleSubmit = async () => {
+    if (!macrosId) {
+      console.error("No macros ID available");
+      return;
+    }
+
+    const startDate = new Date();
+    const endDate = getNextDayOfWeek(untilDay);
+
+    for (
+      let date = new Date(startDate);
+      date <= endDate;
+      date.setDate(date.getDate() + 1)
+    ) {
+      const foodDay: FoodDay = {
+        id: null,
+        macros_id: macrosId,
+        profile_id: profile.id,
+        date: date.toISOString().split("T")[0],
+      };
+
+      try {
+        const savedFoodDay = await saveFoodDay(foodDay);
+
+        const numInt = parseInt(num);
+        for (let i = 0; i < numInt; i++) {
+          let name = "Snack";
+          if (i === 0) {
+            name = "Breakfast";
+          } else if (i === Math.floor(numInt / 2)) {
+            name = "Lunch";
+          } else if (i === numInt - 1) {
+            name = "Dinner";
+          }
+
+          const foodTime: FoodTime = {
+            id: null,
+            food_day_id: savedFoodDay.id,
+            name: name,
+          };
+
+          await saveFoodTime(foodTime);
+        }
+      } catch (error) {
+        console.error("Error saving food day or food time:", error);
+      }
+    }
+
+    navigation.reset({ routes: [{ index: 0, name: "Food" }] });
+  };
 
   return (
     <View style={tw("flex w-full bg-black items-center")}>
@@ -90,7 +177,7 @@ const InitialFood = () => {
           icon={() => <AntDesign name="right" size={24} color="white" />}
           mode="contained"
           style={tw("mt-4 bg-black text-white border-2 border-white")}
-          onPress={() => navigation.reset({ routes: [{index:0, name: "Food" }] })}
+          onPress={() => handleSubmit}
         >
           <Text style={tw("text-white text-2xl mr-4")}>Create</Text>
         </Button>

@@ -25,13 +25,18 @@ export const checkFoodDaysByProfileId = async (
   }
 };
 
-export const saveFoodDay = async (foodDay: FoodDay) => {
+export const saveFoodDay = async (foodDay: FoodDay): Promise<FoodDay> => {
   try {
     const db = await getDBConnection();
-    await db?.runAsync(
-      ` INSERT INTO food_days (profile_id,macros_id,date) VALUES (${foodDay.profile_id}, ${foodDay.macros_id}, '${foodDay.date}' ); `
+    const result = await db?.runAsync(
+      `INSERT INTO food_days (profile_id, macros_id, date) VALUES (${foodDay.profile_id}, ${foodDay.macros_id}, '${foodDay.date}');`
     );
+    const savedFoodDay = await db?.getFirstAsync(
+      `SELECT * FROM food_days WHERE rowid = last_insert_rowid();`
+    );
+    return savedFoodDay as FoodDay;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
